@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iratrips.Mapkit", "Iratrips.Mapkit\Iratrips.Mapkit.csproj", "{F8258F2A-9C80-424D-A769-05D8C4AE4A7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iratrips.Mapkit.Android", "Iratrips.Mapkit.Android\Iratrips.Mapkit.Android.csproj", "{42CBD7E5-D33B-4298-83C3-C6F56242DD57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iratrips.Mapkit.Desktop", "Iratrips.Mapkit.Desktop\Iratrips.Mapkit.Desktop.csproj", "{55A7B47E-9798-451F-B9C7-FD82F8E8E7E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iratrips.Mapkit.iOS", "Iratrips.Mapkit.iOS\Iratrips.Mapkit.iOS.csproj", "{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iratrips.Mapkit.Web", "Iratrips.Mapkit.Web\Iratrips.Mapkit.Web.csproj", "{EB4A31BB-1424-45B9-8E18-2EEA24F41A45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8258F2A-9C80-424D-A769-05D8C4AE4A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8258F2A-9C80-424D-A769-05D8C4AE4A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8258F2A-9C80-424D-A769-05D8C4AE4A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8258F2A-9C80-424D-A769-05D8C4AE4A7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42CBD7E5-D33B-4298-83C3-C6F56242DD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42CBD7E5-D33B-4298-83C3-C6F56242DD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42CBD7E5-D33B-4298-83C3-C6F56242DD57}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{42CBD7E5-D33B-4298-83C3-C6F56242DD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42CBD7E5-D33B-4298-83C3-C6F56242DD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42CBD7E5-D33B-4298-83C3-C6F56242DD57}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{55A7B47E-9798-451F-B9C7-FD82F8E8E7E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A7B47E-9798-451F-B9C7-FD82F8E8E7E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A7B47E-9798-451F-B9C7-FD82F8E8E7E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A7B47E-9798-451F-B9C7-FD82F8E8E7E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EB4A31BB-1424-45B9-8E18-2EEA24F41A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4A31BB-1424-45B9-8E18-2EEA24F41A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4A31BB-1424-45B9-8E18-2EEA24F41A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4A31BB-1424-45B9-8E18-2EEA24F41A45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5ADDE5DF-3556-4903-8AD6-1986A813FC71}
+	EndGlobalSection
+EndGlobal
