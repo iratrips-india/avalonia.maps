@@ -31,37 +31,37 @@ namespace Iratrips.MapKit.Droid
         GoogleMap.ISnapshotReadyCallback, GoogleMap.IOnCameraIdleListener, IOnMapReadyCallback,
         GoogleMap.IInfoWindowAdapter, GoogleMap.IOnCameraMoveStartedListener
     {
-        Context Context { get; set; }
+        private Context Context { get; set; }
 
-        object _lockObj = new object();
+        private object _lockObj = new object();
 
-        bool _isInitialized;
-        bool _isLayoutPerformed;
+        private bool _isInitialized = false;
+        private bool _isLayoutPerformed = false;
 
-        readonly List<MKRoute> _tempRouteList = new List<MKRoute>();
+        private readonly List<MKRoute> _tempRouteList = new List<MKRoute>();
 
-        readonly Dictionary<MKRoute, Polyline> _routes = new Dictionary<MKRoute, Polyline>();
-        readonly Dictionary<MKPolyline, Polyline> _polylines = new Dictionary<MKPolyline, Polyline>();
-        readonly Dictionary<MKCircle, Circle> _circles = new Dictionary<MKCircle, Circle>();
-        readonly Dictionary<MKPolygon, Polygon> _polygons = new Dictionary<MKPolygon, Polygon>();
-        readonly Dictionary<MKCustomMapPin, MKMarker> _markers = new Dictionary<MKCustomMapPin, MKMarker>();
+        private readonly Dictionary<MKRoute, Polyline> _routes = new Dictionary<MKRoute, Polyline>();
+        private readonly Dictionary<MKPolyline, Polyline> _polylines = new Dictionary<MKPolyline, Polyline>();
+        private readonly Dictionary<MKCircle, Circle> _circles = new Dictionary<MKCircle, Circle>();
+        private readonly Dictionary<MKPolygon, Polygon> _polygons = new Dictionary<MKPolygon, Polygon>();
+        private readonly Dictionary<MKCustomMapPin, MKMarker> _markers = new Dictionary<MKCustomMapPin, MKMarker>();
 
-        Marker _selectedMarker;
-        bool _isDragging;
-        bool _disposed;
-        byte[] _snapShot;
+        private Marker? _selectedMarker;
+        private bool _isDragging = false;
+        private bool _disposed = false;
+        private byte[]? _snapShot;
 
-        TileOverlay _tileOverlay;
-        GoogleMap _googleMap;
+        private TileOverlay? _tileOverlay;
+        private GoogleMap? _googleMap = null;
 
 
-        static Bundle s_bundle;
+        private static Bundle s_bundle;
         internal static Bundle Bundle { set { s_bundle = value; } }
 
-        GoogleMap Map => _googleMap;
+        private GoogleMap? Map => _googleMap;
         internal MKCustomMap FormsMap { get; set; }
 
-        IMapFunctions MapFunctions => this.FormsMap as IMapFunctions;
+        private IMapFunctions MapFunctions => this.FormsMap as IMapFunctions;
 
         /// <summary>
         /// Creates a new instance of <see cref="MKCustomMapAdaptor"/>
@@ -77,7 +77,6 @@ namespace Iratrips.MapKit.Droid
             var mapView = new MapView(Context);
             mapView.OnCreate(s_bundle);
             mapView.OnResume();
-            if (mapView == null) return;
 
             lock (_lockObj)
             {
@@ -228,12 +227,6 @@ namespace Iratrips.MapKit.Droid
             {
                 _googleMap = googleMap;
 
-                if (FormsMap.IsClusteringEnabled)
-                {
-                    _clusterManager = new ClusterManager(Context, _googleMap);
-                    _clusterManager.Renderer = new MKMarkerRenderer(Context, _googleMap, _clusterManager, this);
-                }
-
                 _googleMap.MarkerClick += OnMarkerClick;
                 _googleMap.MapClick += OnMapClick;
                 _googleMap.MapLongClick += OnMapLongClick;
@@ -266,7 +259,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnUserLocationChange(object sender, GoogleMap.MyLocationChangeEventArgs e)
+        void OnUserLocationChange(object? sender, GoogleMap.MyLocationChangeEventArgs e)
         {
             if (e.Location == null || FormsMap == null) return;
 
@@ -278,7 +271,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnInfoWindowClick(object sender, GoogleMap.InfoWindowClickEventArgs e)
+        void OnInfoWindowClick(object? sender, GoogleMap.InfoWindowClickEventArgs e)
         {
             var pin = GetPinByMarker(e.Marker);
 
@@ -292,7 +285,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnMarkerDrag(object sender, GoogleMap.MarkerDragEventArgs e)
+        void OnMarkerDrag(object? sender, GoogleMap.MarkerDragEventArgs e)
         {
             var item = _markers.SingleOrDefault(i => true == i.Value.Marker?.Id.Equals(e.Marker.Id));
             if (item.Key == null) return;
@@ -304,7 +297,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnMarkerDragStart(object sender, GoogleMap.MarkerDragStartEventArgs e)
+        void OnMarkerDragStart(object? sender, GoogleMap.MarkerDragStartEventArgs e)
         {
             _isDragging = true;
         }
@@ -313,23 +306,17 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnCameraChange(object sender, GoogleMap.CameraChangeEventArgs e)
+        void OnCameraChange(object? sender, GoogleMap.CameraChangeEventArgs e)
         {
             if (FormsMap == null) return;
-
             FormsMap.MapRegion = GetCurrentMapRegion(e.Position.Target);
-
-            if (FormsMap.IsClusteringEnabled)
-            {
-                _clusterManager.OnCameraIdle();
-            }
         }
         /// <summary>
         /// When a pin gets clicked
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnMarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
+        void OnMarkerClick(object? sender, GoogleMap.MarkerClickEventArgs e)
         {
             if (FormsMap == null) return;
             var item = _markers.SingleOrDefault(i => true == i.Value.Marker?.Id.Equals(e.Marker.Id));
@@ -347,7 +334,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnMarkerDragEnd(object sender, GoogleMap.MarkerDragEndEventArgs e)
+        void OnMarkerDragEnd(object? sender, GoogleMap.MarkerDragEndEventArgs e)
         {
             _isDragging = false;
 
@@ -356,13 +343,6 @@ namespace Iratrips.MapKit.Droid
             var pin = _markers.SingleOrDefault(i => true == i.Value.Marker?.Id.Equals(e.Marker.Id));
             if (pin.Key == null) return;
 
-            if (FormsMap.IsClusteringEnabled)
-            {
-                _clusterManager.RemoveItem(pin.Value);
-                _clusterManager.AddItem(pin.Value);
-                _clusterManager.Cluster();
-            }
-
             MapFunctions.RaisePinDragEnd(pin.Key);
         }
         /// <summary>
@@ -370,7 +350,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnMapLongClick(object sender, GoogleMap.MapLongClickEventArgs e)
+        void OnMapLongClick(object? sender, GoogleMap.MapLongClickEventArgs e)
         {
             if (FormsMap == null) return;
 
@@ -382,7 +362,7 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="sender">Event Sender</param>
         /// <param name="e">Event Arguments</param>
-        void OnMapClick(object sender, GoogleMap.MapClickEventArgs e)
+        void OnMapClick(object? sender, GoogleMap.MapClickEventArgs e)
         {
             if (FormsMap == null) return;
 
@@ -447,18 +427,11 @@ namespace Iratrips.MapKit.Droid
             var pin = sender as MKCustomMapPin;
             if (pin == null) return;
 
-
             MKMarker marker = null;
             if (!_markers.ContainsKey(pin) || (marker = _markers[pin]) == null) return;
             await marker.HandlePropertyChangedAsync(e, _isDragging);
-
-            if (FormsMap.IsClusteringEnabled && e.PropertyName == nameof(MKCustomMapPin.Position) && !_isDragging)
-            {
-                _clusterManager.RemoveItem(marker);
-                _clusterManager.AddItem(marker);
-                _clusterManager.Cluster();
-            }
         }
+        
         /// <summary>
         /// Collection of routes changed
         /// </summary>
