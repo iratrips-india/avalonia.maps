@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 using Android.Gms.Common.Apis;
 using Android.Gms.Location.Places;
 using Android.Gms.Maps.Model;
+using Iratrips.Mapkit.Android;
 using Iratrips.MapKit.Api;
-using Iratrips.MapKit.Droid;
-using Xamarin.Forms;
-
-[assembly: Dependency(typeof(Iratrips.MapKit.Droid.NativePlacesApi))]
 
 namespace Iratrips.MapKit.Droid
 {
@@ -70,7 +67,7 @@ namespace Iratrips.MapKit.Droid
         {
             if(_apiClient == null)
             {
-                _apiClient = new GoogleApiClient.Builder(Forms.Context)
+                _apiClient = new GoogleApiClient.Builder(Platform.AppContext)
                     .AddApi(PlacesClass.GEO_DATA_API)
                     .Build();
             }

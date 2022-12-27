@@ -1,7 +1,7 @@
 ﻿namespace Iratrips.MapKit.Overlays
 {
     /// <summary>
-    /// Internally used functions to set read-only properties on <see cref="MKRouteStep"/>
+    /// Internally used functions to set read-only properties on <see cref="MapRouteStep"/>
     /// </summary>
     public interface IRouteStepFunctions
     {

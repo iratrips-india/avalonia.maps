@@ -1,7 +1,7 @@
 ﻿namespace Iratrips.MapKit.Overlays
 {
     /// <summary>
-    /// Internally used functions to set read-only properties on the <see cref="MKRoute"/>
+    /// Internally used functions to set read-only properties on the <see cref="MapRoute"/>
     /// </summary>
     public interface IRouteFunctions
     {
@@ -14,7 +14,7 @@
         /// Sets the <value>Steps</value>
         /// </summary>
         /// <param name="steps">Steps of the route</param>
-        void SetSteps(MKRouteStep[] steps);
+        void SetSteps(MapRouteStep[] steps);
         /// <summary>
         /// Sets the <value>TravelTime</value>
         /// </summary>

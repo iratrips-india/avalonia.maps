@@ -1,6 +1,7 @@
 ﻿using Avalonia;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Avalonia.Platform;
 
 
 namespace Iratrips.MapKit.Interfaces
@@ -10,6 +11,8 @@ namespace Iratrips.MapKit.Interfaces
     /// </summary>
     public interface IRendererFunctions
     {
+        IPlatformHandle PlatformHandle { get; }
+        
         /// <summary>
         /// Returns the current map as an image
         /// </summary>

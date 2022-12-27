@@ -36,44 +36,33 @@ namespace Iratrips.MapKit.Droid
             return new LatLng(self.Latitude, self.Longitude);
         }
         /// <summary>
-        /// Convert <see cref="MKRouteTravelMode"/> to <see cref="GmsDirectionTravelMode"/>
+        /// Convert <see cref="MapRouteTravelMode"/> to <see cref="GmsDirectionTravelMode"/>
         /// </summary>
         /// <param name="self">Self instance</param>
         /// <returns>Gms Direction API travel mode</returns>
-        public static GmsDirectionTravelMode ToGmsTravelMode(this MKRouteTravelMode self)
+        public static GmsDirectionTravelMode ToGmsTravelMode(this MapRouteTravelMode self)
         {
             switch (self)
             {
-                case MKRouteTravelMode.Driving:
+                case MapRouteTravelMode.Driving:
                     return GmsDirectionTravelMode.Driving;
-                case MKRouteTravelMode.Walking:
+                case MapRouteTravelMode.Walking:
                     return GmsDirectionTravelMode.Walking;
-                case MKRouteTravelMode.Any:
+                case MapRouteTravelMode.Any:
                     return GmsDirectionTravelMode.Driving;
                 default:
                     return GmsDirectionTravelMode.Driving;
             }
         }
+        
         /// <summary>
-        /// Convert a <see cref="ImageSource"/> to the native Android <see cref="Bitmap"/>
+        /// Convert a <see cref="Xamarin.Forms.Point"/> to <see cref="Android.Graphics.Point"/>
         /// </summary>
-        /// <param name="source">Self instance</param>
-        /// <param name="context">Android Context</param>
-        /// <returns>The Bitmap</returns>
-        public static Bitmap ToBitmap(this IImage source, Context context)
+        /// <param name="point">Self</param>
+        /// <returns>A Android point</returns>
+        public static Point ToAndroidPoint(this Avalonia.Point point)
         {
-            // if (source is FileImageSource)
-            // {
-            //     return new FileImageSourceHandler().LoadImageAsync(source, context).GetAwaiter().GetResult();
-            // }
-            // else if (source is StreamImageSource)
-            // {
-            //     return new StreamImagesourceHandler().LoadImageAsync(source, context).GetAwaiter().GetResult();
-            // }
-
-            //if (source is UriImageSource) Not Supported
-
-            return null;
+            return new Android.Graphics.Point((int)point.X, (int)point.Y);
         }
         
         /// <summary>
@@ -81,19 +70,9 @@ namespace Iratrips.MapKit.Droid
         /// </summary>
         /// <param name="point">Self</param>
         /// <returns>A Android point</returns>
-        public static Point ToAndroidPoint(this Point point)
+        public static Android.Graphics.Color ToAndroid(this Color color)
         {
-            return new Point((int)point.X, (int)point.Y);
-        }
-        
-        /// <summary>
-        /// Convert a <see cref="Xamarin.Forms.Point"/> to <see cref="Android.Graphics.Point"/>
-        /// </summary>
-        /// <param name="point">Self</param>
-        /// <returns>A Android point</returns>
-        public static Point ToAndroidColor(this Color color)
-        {
-            return new Android.Util.Col((int)point.X, (int)point.Y);
+            return new Android.Graphics.Color(color.R, color.G, color.B, color.A);
         }
 
         /// <summary>
