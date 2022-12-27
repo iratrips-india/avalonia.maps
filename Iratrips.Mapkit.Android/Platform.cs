@@ -5,8 +5,6 @@ using Iratrips.MapKit.Droid;
 using Iratrips.MapKit.Interfaces;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-[assembly: MetaData("com.google.android.maps.v2.API_KEY", Value = "AIzaSyAeQUFd_NSAa7OrrNvVqz6XDTTXe2zrQe8")]
-
 namespace Iratrips.Mapkit.Android;
 
 public static class Platform

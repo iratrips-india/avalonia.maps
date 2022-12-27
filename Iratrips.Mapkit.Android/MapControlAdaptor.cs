@@ -17,6 +17,7 @@ using Iratrips.MapKit.Overlays;
 using Iratrips.MapKit.Utilities;
 using Color = Avalonia.Media.Color;
 using System.Collections;
+using System.Reflection;
 using Android.OS;
 using Android.Content;
 using Android.Views;
@@ -25,6 +26,7 @@ using Avalonia;
 using Avalonia.Platform;
 using Java.IO;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using File = Java.IO.File;
 
 namespace Iratrips.MapKit.Droid
 {
@@ -121,7 +123,7 @@ namespace Iratrips.MapKit.Droid
 
         private void ControlOnLayoutChange(object? sender, View.LayoutChangeEventArgs e)
         {
-            //UpdateMapRegion();
+            UpdateMapRegion();
         }
         
         protected override void Dispose(bool disposing)
@@ -244,6 +246,8 @@ namespace Iratrips.MapKit.Droid
                 UpdateIsShowingUser();
                 UpdateHasZoomEnabled();
                 UpdateHasScrollEnabled();
+                
+                MapFunctions?.RaiseMapReady();
             }
         }
         /// <summary>
@@ -1066,7 +1070,7 @@ namespace Iratrips.MapKit.Droid
             try
             {
                 if (pin.Image != null)
-                    bitmap = BitmapDescriptorFactory.FromPath(pin.Image);
+                    bitmap = Droid.BitmapUtil.GetBitmapDescriptorFromStream(pin.Image);
                 else
                 {
                     if (pin.DefaultPinColor != default(Color))
@@ -1100,7 +1104,7 @@ namespace Iratrips.MapKit.Droid
             {
                 if (pin.Image != null)
                 {
-                    bitmap = BitmapDescriptorFactory.FromPath(pin.Image);
+                    bitmap = Droid.BitmapUtil.GetBitmapDescriptorFromStream(pin.Image);
                 }
                 else
                 {

@@ -14,7 +14,7 @@ namespace Iratrips.MapKit
         string _id;
         string _group;
         Position _position;
-        string _image;
+        Stream? _image;
         bool _isDraggable;
         Color _defaultPinColor;
         Point _anchor = new Point(0.5, 0.5);
@@ -57,7 +57,7 @@ namespace Iratrips.MapKit
         /// Gets/Sets the image of the pin. If null the default is used
         /// UriImageSource is not supported.
         /// </summary>
-        public string Image
+        public Stream? Image
         {
             get { return _image; }
             set { SetField(ref _image, value); }

@@ -1,8 +1,15 @@
-﻿using Android.Content;
+﻿using System;
+using Android.Content;
 using Android.Gms.Maps.Model;
 using System.ComponentModel;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
-using Avalonia.Media;
+using Android.Graphics;
+using Avalonia;
+using Avalonia.Platform;
+using Color = Avalonia.Media.Color;
+using Exception = Java.Lang.Exception;
 
 namespace Iratrips.MapKit.Droid
 {
@@ -127,7 +134,7 @@ namespace Iratrips.MapKit.Droid
             {
                 if (Pin.Image != null)
                 {
-                    bitmap = BitmapDescriptorFactory.FromPath(Pin.Image);
+                    bitmap = BitmapUtil.GetBitmapDescriptorFromStream(Pin.Image);
                 }
                 else
                 {
@@ -162,7 +169,7 @@ namespace Iratrips.MapKit.Droid
             {
                 if (Pin.Image != null)
                 {
-                    bitmap = BitmapDescriptorFactory.FromPath(Pin.Image);
+                    bitmap = BitmapUtil.GetBitmapDescriptorFromStream(Pin.Image);
                 }
                 else
                 {
@@ -185,4 +192,12 @@ namespace Iratrips.MapKit.Droid
             markerOptions.SetIcon(bitmap);
         }
     }
+
+    public static class BitmapUtil
+    {
+        public static BitmapDescriptor GetBitmapDescriptorFromStream(Stream stream)
+        {
+            return BitmapDescriptorFactory.FromBitmap(BitmapFactory.DecodeStream(stream));
+        }
+    } 
 }

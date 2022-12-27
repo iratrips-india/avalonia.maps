@@ -13,6 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iratrips.Mapkit.iOS", "Irat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{B761DF97-187A-4FAA-83F0-CF4B7E9285A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapSample", "Samples\MapSample\MapSample\MapSample.csproj", "{B5BF35DF-B975-45DB-9288-A03EE1888051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapSample.Desktop", "Samples\MapSample\MapSample.Desktop\MapSample.Desktop.csproj", "{D32DCFE5-3B6E-4D42-B774-45D5114BCA80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapSample.Android", "Samples\MapSample\MapSample.Android\MapSample.Android.csproj", "{A27F9DA0-68EE-435C-942E-D3EA120E5737}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapSample.Web", "Samples\MapSample\MapSample.Web\MapSample.Web.csproj", "{3E027AAC-024C-4CAF-A7ED-2C2794C8507D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapSample.iOS", "Samples\MapSample\MapSample.iOS\MapSample.iOS.csproj", "{10141AFD-FD13-4782-A6F2-2E61E4781D48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +49,26 @@ Global
 		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A97F9F1F-D954-4702-9F83-FC86C41F6AD2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B5BF35DF-B975-45DB-9288-A03EE1888051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BF35DF-B975-45DB-9288-A03EE1888051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BF35DF-B975-45DB-9288-A03EE1888051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BF35DF-B975-45DB-9288-A03EE1888051}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32DCFE5-3B6E-4D42-B774-45D5114BCA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32DCFE5-3B6E-4D42-B774-45D5114BCA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32DCFE5-3B6E-4D42-B774-45D5114BCA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32DCFE5-3B6E-4D42-B774-45D5114BCA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27F9DA0-68EE-435C-942E-D3EA120E5737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27F9DA0-68EE-435C-942E-D3EA120E5737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27F9DA0-68EE-435C-942E-D3EA120E5737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27F9DA0-68EE-435C-942E-D3EA120E5737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E027AAC-024C-4CAF-A7ED-2C2794C8507D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E027AAC-024C-4CAF-A7ED-2C2794C8507D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E027AAC-024C-4CAF-A7ED-2C2794C8507D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E027AAC-024C-4CAF-A7ED-2C2794C8507D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10141AFD-FD13-4782-A6F2-2E61E4781D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10141AFD-FD13-4782-A6F2-2E61E4781D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10141AFD-FD13-4782-A6F2-2E61E4781D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10141AFD-FD13-4782-A6F2-2E61E4781D48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,5 +77,10 @@ Global
 		SolutionGuid = {5ADDE5DF-3556-4903-8AD6-1986A813FC71}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B5BF35DF-B975-45DB-9288-A03EE1888051} = {B761DF97-187A-4FAA-83F0-CF4B7E9285A9}
+		{D32DCFE5-3B6E-4D42-B774-45D5114BCA80} = {B761DF97-187A-4FAA-83F0-CF4B7E9285A9}
+		{A27F9DA0-68EE-435C-942E-D3EA120E5737} = {B761DF97-187A-4FAA-83F0-CF4B7E9285A9}
+		{3E027AAC-024C-4CAF-A7ED-2C2794C8507D} = {B761DF97-187A-4FAA-83F0-CF4B7E9285A9}
+		{10141AFD-FD13-4782-A6F2-2E61E4781D48} = {B761DF97-187A-4FAA-83F0-CF4B7E9285A9}
 	EndGlobalSection
 EndGlobal
